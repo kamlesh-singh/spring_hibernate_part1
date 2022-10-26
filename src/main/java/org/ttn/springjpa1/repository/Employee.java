@@ -1,4 +1,4 @@
-package org.ttn.springjpa1.entity;
+package org.ttn.springjpa1.repository;
 
 import javax.persistence.*;
 
