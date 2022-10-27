@@ -9,7 +9,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-
+import org.ttn.springjpa1.entity.Employee;
+import org.ttn.springjpa1.repository.EmployeePagingAndSorting;
+import org.ttn.springjpa1.repository.EmployeeRepository;
 
 
 import java.util.List;
@@ -40,25 +42,25 @@ class EmployeeApplicationTests {
 		Employee e3 = new Employee();
 		Employee e4 = new Employee();
 		Employee e5 = new Employee();
-		employee.setName("Sharda");
-		employee.setAge(22);
-		employee.setLocation("Delhi");
+		employee.setName("kamlesh");
+		employee.setAge(24);
+		employee.setLocation("Haldawni");
 
-		e2.setName("Aditya");
-		e2.setAge(28);
-		e2.setLocation("Saharsa");
+		e2.setName("himanhsi");
+		e2.setAge(24);
+		e2.setLocation("haldwani");
 
-		e3.setName("Ashu");
-		e3.setAge(29);
-		e3.setLocation("Patna");
+		e3.setName("ram");
+		e3.setAge(26);
+		e3.setLocation("up");
 
-		e4.setName("Saloni");
+		e4.setName("shyam");
 		e4.setAge(20);
-		e4.setLocation("Mumbai");
+		e4.setLocation("gujrat");
 
-		e5.setName("Surbhi");
+		e5.setName("rajat");
 		e5.setAge(24);
-		e5.setLocation("Indore");
+		e5.setLocation("delhi");
 
 		repository.save(employee);
 		repository.save(e2);
@@ -73,13 +75,13 @@ class EmployeeApplicationTests {
 	public void testRead(){
 		Employee employee = repository.findById(1).get();
 		assertNotNull(employee);
-		assertEquals("Sharda", employee.getName());
+		assertEquals("kamlesh", employee.getName());
 	}
 
 	@Test
 	public void testUpdate(){
 		Employee employee = repository.findById(1).get();
-		employee.setName("Sneha");
+		employee.setName("rajat");
 		repository.save(employee);
 	}
 
@@ -92,12 +94,12 @@ class EmployeeApplicationTests {
 
 	@Test
 	public void testCount(){
-		System.out.println("total records==========>>>>>>>"+repository.count());
+		System.out.println("Total Object Count : "+repository.count());
 	}
 
 	@Test
 	public void findByName(){
-		List<Employee> employees = repository.findByName("Sharda");
+		List<Employee> employees = repository.findByName("kamlesh");
 		employees.forEach(e -> System.out.println(e.getLocation()));
 	}
 
